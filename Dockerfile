@@ -8,16 +8,40 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 
 # install some basic packages
-RUN apt-get install -y patch apt-utils\
-    libldap-2.4-2 libssl1.0.0
+RUN apt-get install -y libldap-2.4-2 libssl1.0.0 unixodbc
 
-ADD virtuoso-opensource_7.1_amd64.deb /
-RUN dpkg -i virtuoso-opensource_7.1_amd64.deb
+ADD virtuoso-minimal_7.2_all.deb \
+    virtuoso-opensource-7-bin_7.2_amd64.deb \
+    libvirtodbc0_7.2_amd64.deb \
+    /
+
+# for conductor, but doesn't seam to be enough
+#ADD virtuoso-vad-conductor_7.2_all.deb \
+#    virtuoso-opensource_7.2_all.deb \
+#    virtuoso-opensource-7_7.2_amd64.deb \
+#    virtuoso-opensource-7-common_7.2_amd64.deb \
+#    virtuoso-vsp-startpage_7.2_all.deb \
+#    virtuoso-server_7.2_all.deb \
+#    /
+
+RUN dpkg -i virtuoso-minimal_7.2_all.deb \
+            virtuoso-opensource-7-bin_7.2_amd64.deb \
+            libvirtodbc0_7.2_amd64.deb
+
+# for conductor, but doesn't seam to be enough
+#RUN dpkg -i virtuoso-vad-conductor_7.2_all.deb \
+#            virtuoso-vsp-startpage_7.2_all.deb \
+#            virtuoso-opensource_7.2_all.deb \
+#            virtuoso-opensource-7_7.2_amd64.deb \
+#            virtuoso-opensource-7-common_7.2_amd64.deb \
+#            virtuoso-server_7.2_all.deb
 
 #RUN apt-get -f install -y
 
-ADD virtuoso.ini.patch /virtuoso.ini.patch
-RUN patch /var/lib/virtuoso/db/virtuoso.ini < virtuoso.ini.patch
+#ADD virtuoso.ini.patch /virtuoso.ini.patch
+#RUN patch /var/lib/virtuoso/db/virtuoso.ini < virtuoso.ini.patch
+ADD virtuoso.ini /var/lib/virtuoso/db/
+Add run.sh /
 
 # expose the ODBC and management ports to the outer world
 EXPOSE 1111
@@ -26,5 +50,4 @@ EXPOSE 8890
 VOLUME "/var/lib/virtuoso/db"
 WORKDIR /var/lib/virtuoso/db
 
-# TODO also add some way of changing the password +pwdold dba +pwddba ${PWDDBA}
-CMD ["/usr/bin/virtuoso-t", "-c", "virtuoso", "+foreground"]
+CMD ["/run.sh"]
