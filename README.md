@@ -1,5 +1,10 @@
 # Virtuoso 7 Docker Container
 
+This container provided [OpenLink Virtuoso Open-Source](http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VOSIndex) ([@github](https://github.com/openlink/virtuoso-opensource)) in a container.
+This container is not provided and maintained by OpenLink Software, so please don't blaim them for any malfunctions.
+
+## Usage instructions
+
 You can run the container with the following command.
 Please provide a name to the container, you will need to link other containers with it.
 The `-d` option runs the container in detached mode (in the background).
