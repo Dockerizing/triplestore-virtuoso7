@@ -36,10 +36,6 @@ RUN dpkg -i virtuoso-minimal_7.2_all.deb \
 #            virtuoso-opensource-7-common_7.2_amd64.deb \
 #            virtuoso-server_7.2_all.deb
 
-#RUN apt-get -f install -y
-
-#ADD virtuoso.ini.patch /virtuoso.ini.patch
-#RUN patch /var/lib/virtuoso/db/virtuoso.ini < virtuoso.ini.patch
 ADD virtuoso.ini /var/lib/virtuoso/db/
 Add run.sh /
 
