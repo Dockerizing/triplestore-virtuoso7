@@ -37,11 +37,13 @@ RUN dpkg -i virtuoso-minimal_7.2_all.deb \
 #            virtuoso-server_7.2_all.deb
 
 ADD virtuoso.ini /var/lib/virtuoso/db/
-Add run.sh /
+ADD run.sh /
 
 # expose the ODBC and management ports to the outer world
 EXPOSE 1111
 EXPOSE 8890
+
+ENV PWDDBA "dba"
 
 VOLUME "/var/lib/virtuoso/db"
 WORKDIR /var/lib/virtuoso/db
