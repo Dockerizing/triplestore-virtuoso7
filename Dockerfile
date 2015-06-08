@@ -43,7 +43,7 @@ ADD run.sh /
 EXPOSE 1111
 EXPOSE 8890
 
-ENV PWDDBA "dba"
+ENV PWDDBA="dba"
 
 VOLUME "/var/lib/virtuoso/db"
 WORKDIR /var/lib/virtuoso/db
