@@ -46,6 +46,7 @@ EXPOSE 8890
 ENV PWDDBA="dba"
 
 VOLUME "/var/lib/virtuoso/db"
+VOLUME "/import_store"
 WORKDIR /var/lib/virtuoso/db
 
 CMD ["/run.sh"]
