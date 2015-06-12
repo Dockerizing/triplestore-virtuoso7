@@ -36,7 +36,7 @@ RUN dpkg -i virtuoso-minimal_7.2_all.deb \
 #            virtuoso-opensource-7-common_7.2_amd64.deb \
 #            virtuoso-server_7.2_all.deb
 
-ADD virtuoso.ini /var/lib/virtuoso/db/
+ADD virtuoso.ini.dist /
 ADD run.sh /
 
 # expose the ODBC and management ports to the outer world

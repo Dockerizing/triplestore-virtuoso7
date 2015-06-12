@@ -2,6 +2,15 @@
 VOSCMD=/usr/bin/virtuoso-t
 CONFIG=virtuoso.ini
 
+if [ -f ${CONFIG} ]
+then
+    echo "Reuse existing virtuoso.ini in database directory"
+else
+    echo -n "Copy default virtuoso.ini to database directory (because none exists) …"
+    cp /virtuoso.ini.dist ${CONFIG}
+    echo " (done)"
+fi
+
 # allowing for clean shutdown of background jobs
 cleanup () {
   echo "stopping virtuoso..."
