@@ -2,6 +2,8 @@ FROM debian:jessie
 
 MAINTAINER Natanael Arndt <arndt@informatik.uni-leipzig.de>
 
+LABEL org.aksw.dld=true org.aksw.dld.type="store" org.aksw.dld.provide="virtuoso" org.aksw.dld.env="PWDDBA"
+
 # Let the conatiner know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
 
