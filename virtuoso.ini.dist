@@ -29,7 +29,7 @@ TransactionFile			= /var/lib/virtuoso/db/virtuoso.trx
 xa_persistent_file		= /var/lib/virtuoso/db/virtuoso.pxa
 ErrorLogLevel			= 7
 FileExtend			= 200
-MaxCheckpointRemap		= 2000
+MaxCheckpointRemap		= 524300
 Striping			= 0
 TempStorage			= TempDatabase
 
